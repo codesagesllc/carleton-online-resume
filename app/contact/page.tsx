@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
-
-
+import { db } from '@/lib/db';
+import { contacts } from '@/lib/db/schema';
+import Link from 'next/link';
 
 const ContactPage = () => {
-  
-    const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -16,7 +16,6 @@ const ContactPage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setSubmitting(true);
 
@@ -29,13 +28,11 @@ const ContactPage = () => {
         body: JSON.stringify(data),
       });
 
-      if   
- (!response.ok) {
+      if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
-      const responseData = await response.json();   
-
+      const responseData = await response.json();
       setSuccessMessage(responseData.message);
       reset();
     } catch (error) {
@@ -47,75 +44,82 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4 text-center">Contact Me</h1>
+    <div className="container mx-auto p-8 bg-gray-100 shadow-md rounded-lg">
+      <div className="bg-white p-6 rounded-lg shadow-sm">
+        <h1 className="text-3xl font-bold mb-4 text-center text-indigo-600">Contact Me</h1>
 
-      {successMessage && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-          <span className="block sm:inline">{successMessage}</span>
-        </div>
-      )}
+        {successMessage && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span className="block sm:inline">{successMessage}</span>
+          </div>
+        )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            {...register('name', { required: true })}
-            className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
-          />
-          {errors.name && <span className="text-red-500 text-sm">This field is required</span>}
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              {...register('name', { required: true })}
+              className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+            />
+            {errors.name && <span className="text-red-500 text-sm">This field is required</span>}
+          </div>
 
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-            className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
-          />
-          {errors.email && <span className="text-red-500 text-sm">Please enter a valid email address</span>}
-        </div>
-        
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Phone
-          </label>
-          <input
-            type="text"
-            id="phone"
-            {...register('phone', { required: false})}
-            className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
-          />
-          {errors.email && <span className="text-red-500 text-sm">Please enter a valid phone number</span>}
-        </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+              className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+            />
+            {errors.email && <span className="text-red-500 text-sm">Please enter a valid email address</span>}
+          </div>
 
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-            Message
-          </label>
-          <textarea
-            id="message"
-            {...register('message')}
-            rows={4}
-            className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
-          />
-        </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Phone
+            </label>
+            <input
+              type="text"
+              id="phone"
+              {...register('phone', { required:false})}
+              className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+            />
+            {errors.email && <span className="text-red-500 text-sm">Please enter a valid Phone Number</span>}
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+              Message
+            </label>
+            <textarea
+              id="message"
+              {...register('message')}
+              rows={4}
+              className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+            />
+          </div>
 
-        <button
-          type="submit"
-          disabled={submitting}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          {submitting ? 'Submitting...' : 'Send Message'}
-        </button>
-      </form>
+          <button
+            type="submit"
+            disabled={submitting}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            {submitting ? 'Submitting...' : 'Send Message'}
+          </button>
+        </form>
+
+        <div className="mt-4 text-center">
+          <Link href="/" className="text-blue-600 hover:text-blue-800">
+            &larr; Back to Home
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
