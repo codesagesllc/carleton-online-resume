@@ -42,7 +42,7 @@ export default function Home(){
                       </div>
                       <ul className="list-disc ml-6 mt-2 text-gray-700">
                           <li>Developed a Training Tracking application using Blazor that allowed the Army to track and assign training to personnel</li>
-                          <li>Developed a Budget Tracking application for the Army’s Assets that also gave Data Visualization using ChartJS with .NET Core Web App</li>
+                          <li>Developed a Budget Tracking application for the Army&apos;s Assets that also gave Data Visualization using ChartJS with .NET Core Web App</li>
                       </ul>
                   </div>
                   <div className="mb-4">
