@@ -107,7 +107,7 @@ export default function Home(){
         <div className="bg-white p-4 rounded-lg shadow-sm">
           <h2 className="text-2xl font-semibold mb-2 text-indigo-600">Technologies Used</h2>
           <p className="text-gray-700">
-            This website is built with Next.js, Tailwind CSS, and Radix UI. The contact form utilizes a serverless API route with a Zapier webhook for seamless communication.
+            This website is built with Next.js, Tailwind CSS, and Radix UI. The contact form utilizes a serverless API route with a Zapier webhook for seamless communication. It also uses Zod for input validation.
           </p>
         </div>
               {/* Skills */}

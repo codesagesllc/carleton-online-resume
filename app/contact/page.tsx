@@ -2,9 +2,19 @@
 
 import { useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
-import { db } from '@/lib/db';
-import { contacts } from '@/lib/db/schema';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
+
+
+const contactSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Invalid email address'),
+  phone: z.string().optional(),
+  message: z.string().optional(),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const ContactPage = () => {
   const {
@@ -12,11 +22,14 @@ const ContactPage = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema), // Use Zod resolver for validation
+  });
+
   const [submitting, setSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
     setSubmitting(true);
 
     try {
