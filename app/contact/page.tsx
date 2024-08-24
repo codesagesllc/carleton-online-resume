@@ -75,8 +75,9 @@ const ContactPage = () => {
             <input
               type="text"
               id="name"
-              {...register('name', { required: true })}
-              className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+              {...register('name')}     className={`mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
+                errors.name ? 'border-red-500' : '' // Add error styling
+              }`}
             />
             {errors.name && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
@@ -88,8 +89,9 @@ const ContactPage = () => {
             <input
               type="email"
               id="email"
-              {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-              className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+              {...register('email')}     className={`mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
+                errors.email ? 'border-red-500' : '' // Add error styling
+              }`}
             />
             {errors.email && <span className="text-red-500 text-sm">Please enter a valid email address</span>}
           </div>
@@ -101,8 +103,9 @@ const ContactPage = () => {
             <input
               type="text"
               id="phone"
-              {...register('phone', { required:false})}
-              className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+              {...register('phone')}     className={`mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
+                errors.phone ? 'border-red-500' : '' // Add error styling
+              }`}
             />
             {errors.email && <span className="text-red-500 text-sm">Please enter a valid Phone Number</span>}
           </div>

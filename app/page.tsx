@@ -131,7 +131,6 @@ export default function Home(){
                       <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">Spring Boot</span>
                       <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">ASP.NET Web API</span>
                       <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">ASP.NET Core Web</span>
-                      <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">ASP.NET Core Web</span>
                   </div>
               </div>
           </div>
