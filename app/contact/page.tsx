@@ -50,7 +50,7 @@ const ContactPage = () => {
       reset();
     } catch (error) {
       console.error('Error submitting contact form:', error);
-      // Handle errors gracefully (e.g., display an error message to the user)
+
     } finally {
       setSubmitting(false);
     }
@@ -76,7 +76,7 @@ const ContactPage = () => {
               type="text"
               id="name"
               {...register('name')}     className={`custom-input mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
-                errors.name ? 'border-red-500' : '' // Add error styling
+                errors.name ? 'border-red-500' : ''
               }`}
             />
             {errors.name && <span className="text-red-500 text-sm">This field is required</span>}
@@ -90,7 +90,7 @@ const ContactPage = () => {
               type="email"
               id="email"
               {...register('email')}     className={`custom-input mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
-                errors.email ? 'border-red-500' : '' // Add error styling
+                errors.email ? 'border-red-500' : ''
               }`}
             />
             {errors.email && <span className="text-red-500 text-sm">Please enter a valid email address</span>}
@@ -104,7 +104,7 @@ const ContactPage = () => {
               type="text"
               id="phone"
               {...register('phone')}     className={`custom-input mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
-                errors.phone ? 'border-red-500' : '' // Add error styling
+                errors.phone ? 'border-red-500' : '' 
               }`}
             />
             {errors.email && <span className="text-red-500 text-sm">Please enter a valid Phone Number</span>}
