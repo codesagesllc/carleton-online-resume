@@ -15,7 +15,10 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+input, textarea { 
+  color: rgb(var(--foreground-rgb)) !important; /* Ensure text color is visible */
+  background-color: white; /* Or a suitable contrasting color */
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
