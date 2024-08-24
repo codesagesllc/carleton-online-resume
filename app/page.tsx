@@ -124,9 +124,17 @@ export default function Home(){
                       <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">Spring Boot</span>
                       <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">ASP.NET Web API</span>
                       <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">ASP.NET Core Web</span>
+                      <span className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">ASP.NET Core Web</span>
                   </div>
               </div>
           </div>
+                  {/* Technologies Used */}
+        <div className="bg-white p-4 rounded-lg shadow-sm">
+          <h2 className="text-2xl font-semibold mb-2 text-indigo-600">Technologies Used</h2>
+          <p className="text-gray-700">
+            This website is built with Next.js, Tailwind CSS, and Radix UI. The contact form utilizes a serverless API route with a Zapier webhook for seamless communication.
+          </p>
+        </div>
           <div className="text-center mt-4"> 
           <a 
     href="https://docs.google.com/document/d/1TudqEyB5urs_uukjfC1ET8q2Ob47mxev/export?format=pdf" 
