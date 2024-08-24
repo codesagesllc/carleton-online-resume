@@ -75,7 +75,7 @@ const ContactPage = () => {
             <input
               type="text"
               id="name"
-              {...register('name')}     className={`mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
+              {...register('name')}     className={`custom-input mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
                 errors.name ? 'border-red-500' : '' // Add error styling
               }`}
             />
@@ -89,7 +89,7 @@ const ContactPage = () => {
             <input
               type="email"
               id="email"
-              {...register('email')}     className={`mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
+              {...register('email')}     className={`custom-input mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
                 errors.email ? 'border-red-500' : '' // Add error styling
               }`}
             />
@@ -103,7 +103,7 @@ const ContactPage = () => {
             <input
               type="text"
               id="phone"
-              {...register('phone')}     className={`mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
+              {...register('phone')}     className={`custom-input mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300 ${
                 errors.phone ? 'border-red-500' : '' // Add error styling
               }`}
             />
@@ -117,7 +117,7 @@ const ContactPage = () => {
               id="message"
               {...register('message')}
               rows={4}
-              className="mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
+              className="custom-input mt-1 p-2 w-full border rounded-md shadow-sm focus:ring focus:ring-blue-300"
             />
           </div>
 

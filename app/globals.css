@@ -28,7 +28,10 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
+.custom-input {
+  color: black !important;
+  background-color: white !important;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
