@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carleton Cabarrus - Resume</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0.5in;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            font-size: 11px;
+        }
+        
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #4f46e5;
+            padding-bottom: 15px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        
+        .header .title {
+            font-size: 16px;
+            color: #4f46e5;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 10px;
+        }
+        
+        .contact-info span {
+            color: #64748b;
+        }
+        
+        /* Section Headers */
+        .section {
+            margin-bottom: 18px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1e293b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 3px;
+        }
+        
+        /* Experience */
+        .experience-item {
+            margin-bottom: 15px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        
+        .job-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+        
+        .company {
+            font-size: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+        }
+        
+        .duration {
+            font-size: 10px;
+            color: #64748b;
+            font-style: italic;
+        }
+        
+        .achievements {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .achievements li {
+            margin-bottom: 4px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+        
+        .achievements li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #4f46e5;
+            font-weight: bold;
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .skill-category h4 {
+            font-size: 11px;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            font-size: 9px;
+            color: #475569;
+            margin-bottom: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .skill-level {
+            font-size: 8px;
+            color: #4f46e5;
+            font-weight: 600;
+        }
+        
+        /* Projects */
+        .project-item {
+            margin-bottom: 12px;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #4f46e5;
+        }
+        
+        .project-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+        
+        .project-description {
+            font-size: 10px;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+        
+        .tech-stack {
+            font-size: 9px;
+            color: #64748b;
+            font-style: italic;
+        }
+        
+        .tech-stack strong {
+            color: #4f46e5;
+        }
+        
+        /* Education */
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+        .degree {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+        
+        .university {
+            font-size: 11px;
+            color: #4f46e5;
+            margin-top: 2px;
+        }
+        
+        .graduation {
+            font-size: 10px;
+            color: #64748b;
+            font-weight: 600;
+        }
+        
+        /* Metrics */
+        .metrics-bar {
+            display: flex;
+            justify-content: space-around;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 8px;
+            opacity: 0.9;
+        }
+        
+        /* Print Optimization */
+        @media print {
+            body {
+                font-size: 10px;
+            }
+            
+            .resume-container {
+                padding: 10px;
+            }
+            
+            .section {
+                margin-bottom: 15px;
+            }
+            
+            .experience-item {
+                margin-bottom: 12px;
+            }
+            
+            .achievements li {
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>CARLETON CABARRUS</h1>
+            <div class="title">Full-Stack Software Developer</div>
+            <div class="contact-info">
+                <span>📧 carletoncabarrus@codesages.net</span>
+                <span>🔗 linkedin.com/in/carleton-cabarrus-jr</span>
+                <span>💻 github.com/carletonDev</span>
+                <span>📍 Virginia Beach, VA</span>
+            </div>
+        </div>
+        
+        <!-- Metrics Bar -->
+        <div class="metrics-bar">
+            <div class="metric">
+                <span class="metric-value">5,000+</span>
+                <span class="metric-label">Users Managed</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">100K+</span>
+                <span class="metric-label">Daily Records</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">99.9%</span>
+                <span class="metric-label">System Uptime</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">70%</span>
+                <span class="metric-label">Performance Gain</span>
+            </div>
+        </div>
+        
+        <!-- Professional Experience -->
+        <div class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Full Stack Developer - Enterprise Solutions</div>
+                        <div class="company">Marathon Consulting (Vital Core Client)</div>
+                    </div>
+                    <div class="duration">Jan 2024 - Present</div>
+                </div>
+                <ul class="achievements">
+                    <li>Led development of enterprise Dynamic Group Management System managing 5,000+ users and processing 100,000+ records daily via Microsoft Graph API</li>
+                    <li>Architected multi-layered Clean Architecture solution using .NET 8, Blazor Server, and Entity Framework Core with 99.9% uptime</li>
+                    <li>Built real-time SignalR monitoring dashboard tracking 6 concurrent background sync jobs with intelligent conflict resolution</li>
+                    <li>Optimized performance reducing page load from 8s to under 2s and API calls by 70% through strategic caching</li>
+                    <li>Implemented comprehensive logging, monitoring, and alerting systems ensuring enterprise-grade reliability</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Agile Developer 2</div>
+                        <div class="company">Freddie Mac</div>
+                    </div>
+                    <div class="duration">Sept 2021 - Jan 2024</div>
+                </div>
+                <ul class="achievements">
+                    <li>Maintained and enhanced Icertis Contract Management System for Single Family Division serving mortgage operations</li>
+                    <li>Developed automated testing framework using Java, Spring Boot, Selenium, and Cucumber with 95% test coverage</li>
+                    <li>Managed microservices deployment and configuration on OpenShift platform</li>
+                    <li>Optimized CI/CD pipelines reducing deployment time from 2 hours to 30 minutes</li>
+                    <li>Collaborated with cross-functional teams using Agile methodologies and DevOps best practices</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">J2EE Developer</div>
+                        <div class="company">Estes Express</div>
+                    </div>
+                    <div class="duration">Oct 2020 - Sept 2021</div>
+                </div>
+                <ul class="achievements">
+                    <li>Developed and maintained enterprise logistics applications using Java EE, Spring Framework</li>
+                    <li>Integrated REST APIs for supply chain management and tracking systems</li>
+                    <li>Improved application performance by 40% through database query optimization</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Programmer 3</div>
+                        <div class="company">Onshore Outsourcing</div>
+                    </div>
+                    <div class="duration">Aug 2019 - Oct 2020</div>
+                </div>
+                <ul class="achievements">
+                    <li>Modernized legacy systems using ASP.NET Core, Entity Framework, and cloud technologies</li>
+                    <li>Reduced infrastructure costs by 40% through cloud migration to Azure</li>
+                    <li>Implemented Docker containerization improving deployment reliability and scalability</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Technical Skills -->
+        <div class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Languages & Frameworks</h4>
+                    <ul class="skill-list">
+                        <li>C# / .NET <span class="skill-level">Expert</span></li>
+                        <li>Java / Spring <span class="skill-level">Advanced</span></li>
+                        <li>TypeScript <span class="skill-level">Advanced</span></li>
+                        <li>Blazor Server/WASM <span class="skill-level">Expert</span></li>
+                        <li>React / Next.js <span class="skill-level">Proficient</span></li>
+                        <li>SQL / T-SQL <span class="skill-level">Expert</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Cloud & DevOps</h4>
+                    <ul class="skill-list">
+                        <li>Microsoft Azure <span class="skill-level">Advanced</span></li>
+                        <li>AWS <span class="skill-level">Proficient</span></li>
+                        <li>Docker / Kubernetes <span class="skill-level">Advanced</span></li>
+                        <li>CI/CD Pipelines <span class="skill-level">Advanced</span></li>
+                        <li>Git / Azure DevOps <span class="skill-level">Expert</span></li>
+                        <li>OpenShift <span class="skill-level">Advanced</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools & Platforms</h4>
+                    <ul class="skill-list">
+                        <li>Microsoft Graph API <span class="skill-level">Expert</span></li>
+                        <li>SignalR <span class="skill-level">Advanced</span></li>
+                        <li>Entity Framework <span class="skill-level">Expert</span></li>
+                        <li>REST / GraphQL APIs <span class="skill-level">Expert</span></li>
+                        <li>Microservices <span class="skill-level">Advanced</span></li>
+                        <li>Clean Architecture <span class="skill-level">Expert</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Featured Projects -->
+        <div class="section">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="project-item">
+                <div class="project-title">Dynamic Group Management System</div>
+                <div class="project-description">Enterprise-scale system managing 5,000+ users with Microsoft Graph API integration. Processes 100,000+ records daily with 99.9% uptime and 85% reduction in manual processes.</div>
+                <div class="tech-stack"><strong>Tech Stack:</strong> .NET 8, Blazor Server, SignalR, Microsoft Graph, Clean Architecture, Entity Framework Core</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-title">Contract Management Platform</div>
+                <div class="project-description">Icertis integration for Freddie Mac's Single Family Division with automated testing framework, microservices architecture, and CI/CD pipeline optimization.</div>
+                <div class="tech-stack"><strong>Tech Stack:</strong> Java, Spring Boot, OpenShift, Selenium, Cucumber, REST APIs</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-title">Legacy System Modernization</div>
+                <div class="project-description">Transformed monolithic applications to modern cloud-native architecture achieving 60% performance improvement and 40% cost reduction.</div>
+                <div class="tech-stack"><strong>Tech Stack:</strong> ASP.NET Core, Entity Framework, Azure, Docker, Kubernetes</div>
+            </div>
+        </div>
+        
+        <!-- Education -->
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div>
+                    <div class="degree">Bachelor of Science in Information Systems</div>
+                    <div class="university">Virginia Commonwealth University</div>
+                </div>
+                <div class="graduation">Class of 2016</div>
+            </div>
+        </div>
+        
+        <!-- Summary -->
+        <div class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p style="font-size: 10px; line-height: 1.4; color: #475569;">
+                Experienced Full-Stack Software Developer with 5+ years of expertise in enterprise-scale application development. 
+                Proven track record of architecting and delivering high-performance solutions using .NET, Java, and cloud technologies. 
+                Specialized in Microsoft Graph API integration, real-time systems with SignalR, and clean architecture patterns. 
+                Successfully managed systems processing 100K+ daily records while maintaining 99.9% uptime. Strong background in 
+                Agile methodologies, DevOps practices, and cross-functional team leadership.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
