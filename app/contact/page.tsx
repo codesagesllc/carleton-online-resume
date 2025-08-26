@@ -261,7 +261,7 @@ const ContactPage = () => {
                 </a>
 
                 <a 
-                  href="https://github.com/carletoncabarrus" 
+                  href="https://github.com/carletonDev" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-4 bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl hover:shadow-lg transition-all duration-200 hover:scale-105 group"
