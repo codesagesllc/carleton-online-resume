@@ -1,10 +1,14 @@
 # Database files
 lib/db/
 lib/db.ts
+drizzle.config.ts
+drizzle.config.ts.backup
 
 # Development files
 .env.local
 .env.development
+test-build.*
+security-test.js
 
 # Logs
 *.log
@@ -26,7 +30,3 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
-
-# Build artifacts (keep these commented unless needed)
-# .next/
-# out/
