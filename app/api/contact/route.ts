@@ -35,19 +35,13 @@ const ContactFormSchema = z.object({
 // Security utilities
 class SecurityUtils {
   static getClientIp(request: NextRequest): string {
-    const xForwardedFor = request.headers.get('x-forwarded-for');
-    const xRealIp = request.headers.get('x-real-ip');
-    const connectionRemoteAddr = request.headers.get('x-forwarded-for');
+    const forwarded = request.headers.get('x-forwarded-for');
+    const realIp = request.headers.get('x-real-ip');
+    const connecting = request.headers.get('cf-connecting-ip');
     
-    if (xForwardedFor) {
-      return xForwardedFor.split(',')[0].trim();
-    }
-    if (xRealIp) {
-      return xRealIp.trim();
-    }
-    if (connectionRemoteAddr) {
-      return connectionRemoteAddr.trim();
-    }
+    if (forwarded) return forwarded.split(',')[0].trim();
+    if (realIp) return realIp.trim();
+    if (connecting) return connecting.trim();
     
     return 'unknown';
   }
@@ -79,27 +73,7 @@ class SecurityUtils {
   }
 
   static sanitizeInput(input: string): string {
-    return input
-      .replace(/[<>]/g, '') // Remove potential HTML tags
-      .trim();
-  }
-
-  static validateOrigin(request: NextRequest): boolean {
-    const allowedOrigins = [
-      'http://localhost:3000',
-      'https://carleton-resume.vercel.app',
-      'https://your-domain.com', // Add your actual domain
-    ];
-    
-    const origin = request.headers.get('origin');
-    const referer = request.headers.get('referer');
-    
-    if (!origin && !referer) {
-      return false; // Block requests without origin/referer
-    }
-    
-    const requestOrigin = origin || new URL(referer!).origin;
-    return allowedOrigins.includes(requestOrigin);
+    return input.replace(/[<>]/g, '').trim();
   }
 }
 
@@ -134,23 +108,21 @@ class ApiResponse {
       { 
         success: false, 
         error: 'Too many requests. Please try again later.',
-        retryAfter: 15 * 60 * 1000 // 15 minutes in milliseconds
+        retryAfter: 15 * 60 * 1000
       },
       { 
         status: 429,
-        headers: {
-          'Retry-After': '900', // 15 minutes in seconds
-        }
+        headers: { 'Retry-After': '900' }
       }
     );
   }
 }
 
-// Zapier webhook utility with retry logic
+// Zapier webhook utility
 class WebhookService {
   private static readonly WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/18877515/26lzlrk/';
   private static readonly MAX_RETRIES = 3;
-  private static readonly RETRY_DELAY = 1000; // 1 second
+  private static readonly RETRY_DELAY = 1000;
 
   static async sendToZapier(data: any): Promise<boolean> {
     let lastError: Error | null = null;
@@ -158,7 +130,7 @@ class WebhookService {
     for (let attempt = 1; attempt <= this.MAX_RETRIES; attempt++) {
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
 
         const response = await fetch(this.WEBHOOK_URL, {
           method: 'POST',
@@ -198,10 +170,36 @@ class WebhookService {
   }
 }
 
+// Optional database saving
+async function saveToDatabase(data: any): Promise<number | null> {
+  // Only try to use database if environment variable is set
+  if (!process.env.DATABASE_URL) {
+    console.log('No DATABASE_URL found, skipping database save');
+    return null;
+  }
+
+  try {
+    // Dynamic import to avoid build errors if db modules aren't available
+    const { db } = await import('@/lib/db');
+    const { contacts } = await import('@/lib/db/schema');
+    
+    const result = await db.insert(contacts).values({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      message: data.message,
+    }).returning({ id: contacts.id });
+
+    return result[0].id;
+  } catch (error) {
+    console.error('Database save failed (non-blocking):', error);
+    return null;
+  }
+}
+
 // Main POST handler
 export async function POST(request: NextRequest) {
   try {
-    // Security checks
     const clientIp = SecurityUtils.getClientIp(request);
     
     // Rate limiting
@@ -244,14 +242,20 @@ export async function POST(request: NextRequest) {
       message: SecurityUtils.sanitizeInput(message),
     };
 
-    // Log the contact form submission (since no database)
-    const contactId = Date.now(); // Simple ID based on timestamp
+    // Generate contact ID
+    const contactId = Date.now();
+    
     console.log(`Contact form submitted - ID: ${contactId}, IP: ${clientIp}`, {
       name: sanitizedData.name,
       email: sanitizedData.email,
       phone: sanitizedData.phone,
       messageLength: sanitizedData.message.length,
       timestamp: new Date().toISOString()
+    });
+
+    // Try to save to database (optional, non-blocking)
+    saveToDatabase(sanitizedData).catch(error => {
+      console.error('Database save failed (non-blocking):', error);
     });
 
     // Send to Zapier (non-blocking)
@@ -262,10 +266,8 @@ export async function POST(request: NextRequest) {
       userAgent: request.headers.get('user-agent'),
     };
 
-    // Don't wait for webhook to complete - fire and forget
     WebhookService.sendToZapier(webhookData).catch(error => {
       console.error('Zapier webhook failed (non-blocking):', error);
-      // In a real application, you might want to store this in a queue for retry
     });
 
     return ApiResponse.success('Thank you for your message! I\'ll get back to you within 24 hours.', {
