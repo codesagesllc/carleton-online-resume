@@ -96,8 +96,7 @@ const skillsData = {
     { name: "Clean Architecture", level: 90 },
     { name: "SQL Server", level: 90 },
     { name: "SSIS/SSRS", level: 80 },
-    { name: "SharePoint/PowerApps", level: 75 },
-    { name: "FHIR", level: 75 }
+    { name: "SharePoint/PowerApps", level: 75 }
   ]
 };
 
