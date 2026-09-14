@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Carleton Cabarrus | Full-Stack Software Developer",
-  description: "Experienced Full-Stack Developer specializing in .NET, Java, cloud architecture, and enterprise solutions. 5+ years building scalable applications with 99.9% uptime.",
+  description: "Experienced Full-Stack Developer specializing in .NET, Java, cloud architecture, and enterprise solutions. 6+ years building scalable applications with 99.9% uptime.",
   keywords: "Carleton Cabarrus, Full Stack Developer, Software Engineer, .NET Developer, Java Developer, Cloud Architect, Azure, AWS, Blazor, React, Virginia",
   authors: [{ name: "Carleton Cabarrus" }],
   creator: "Carleton Cabarrus",

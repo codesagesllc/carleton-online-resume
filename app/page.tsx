@@ -74,7 +74,9 @@ const skillsData = {
     { name: "TypeScript", level: 80 },
     { name: "Blazor", level: 90 },
     { name: "React/Next.js", level: 75 },
-    { name: "SQL", level: 90 }
+    { name: "SQL", level: 90 },
+    { name: "T-SQL", level: 90 },
+    { name: "ASP.NET", level: 90 }
   ],
   "Cloud & DevOps": [
     { name: "Azure", level: 85 },
@@ -82,7 +84,8 @@ const skillsData = {
     { name: "Docker/K8s", level: 75 },
     { name: "CI/CD", level: 85 },
     { name: "Git", level: 95 },
-    { name: "OpenShift", level: 80 }
+    { name: "OpenShift", level: 80 },
+    { name: "Azure DevOps/TFS", level: 90 }
   ],
   "Tools & Platforms": [
     { name: "Microsoft Graph", level: 90 },
@@ -90,7 +93,10 @@ const skillsData = {
     { name: "Entity Framework", level: 90 },
     { name: "REST APIs", level: 95 },
     { name: "Microservices", level: 85 },
-    { name: "Clean Architecture", level: 90 }
+    { name: "Clean Architecture", level: 90 },
+    { name: "SQL Server", level: 90 },
+    { name: "SSIS/SSRS", level: 80 },
+    { name: "SharePoint/PowerApps", level: 75 }
   ]
 };
 
@@ -140,7 +146,7 @@ export default function Home() {
                 <LightningBoltIcon className="w-5 h-5 text-yellow-500 animate-pulse" />
               </div>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Building enterprise-scale solutions with modern technologies • 5+ years experience • Cloud architecture specialist
+                Building enterprise-scale solutions with modern technologies • 6+ years experience • Cloud architecture specialist
               </p>
             </div>
 
@@ -267,8 +273,8 @@ export default function Home() {
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-600 to-purple-600"></div>
-            
-            {/* Marathon Consulting */}
+
+            {/* Metas Solutions */}
             <div className="relative mb-8 ml-16">
               <div className="absolute -left-12 w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center">
                 <div className="w-3 h-3 bg-white rounded-full"></div>
@@ -276,32 +282,99 @@ export default function Home() {
               <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800">Full Stack Developer - Enterprise Solutions</h3>
-                    <p className="text-indigo-600 font-semibold">Marathon Consulting (Vital Core Client)</p>
+                    <h3 className="text-xl font-bold text-gray-800">Software Developer</h3>
+                    <p className="text-indigo-600 font-semibold">Metas Solutions</p>
                     <div className="flex items-center space-x-2 text-sm text-gray-600 mt-1">
                       <TimerIcon className="w-4 h-4" />
-                      <span>Jan 2024 - Present</span>
+                      <span>Mar 2026 - Present</span>
+                      <span>•</span>
+                      <span>Remote / Richmond, VA</span>
                     </div>
                   </div>
                   <span className="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full animate-pulse">
                     CURRENT
                   </span>
                 </div>
-                <ul className="space-y-2 text-gray-700">
+                <p className="text-gray-700 mb-3">
+                  Support the modernization, maintenance, testing, and controlled deployment of federal public-health information systems and SQL Server database applications, translating change-management tickets into tested deliverables across the DEV, TEST, UAT, and PROD lifecycle.
+                </p>
+                <ul className="space-y-2 text-gray-700 mb-4">
                   <li className="flex items-start">
                     <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Develop, refactor, and troubleshoot T-SQL stored procedures, functions, views, and deployment scripts to ITB/CDC coding standards without altering business logic</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Perform database dependency analysis via system catalog views and INFORMATION_SCHEMA to identify affected applications, callers, SSIS packages, reports, and configuration tables</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Analyze SSIS/DTSX packages as XML to map connection managers, SQL tasks, data flows, and stored-procedure calls; author technical user manuals for ETL packages</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Design and build a portable C# T-SQL Extractor Utility that parses DTSX files, resolves referenced objects to the correct connection manager, validates access, and exports definitions from SQL Server metadata</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Maintain and modernize C#/ASP.NET application layers (repository, service, model, code-behind) and support JSON/FHIR modernization efforts</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Author SQL unit-test scripts covering positive, negative, boundary, exception, and regression scenarios with record-level verification</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Prepare consolidated installation scripts, unit tests, and versioned deployment ZIP packages; manage check-ins, changesets, and internal code reviews in Azure DevOps/TFS</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Use AI-assisted tools for review, analysis, test generation, and documentation, independently validating all generated output</span>
+                  </li>
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Produce traceability matrices, deployment notes, ITB review packages, and daily status summaries for technical leads, federal reviewers, and stakeholders</span>
+                  </li>
+                </ul>
+                <div className="flex flex-wrap gap-1">
+                  {["SQL Server", "T-SQL", "SSMS", "C#", "ASP.NET", ".NET", "Visual Studio 2022", "Azure DevOps", "TFS", "SSIS", "SSRS", "SharePoint", "PowerApps", "JSON", "FHIR"].map((tech) => (
+                    <span key={tech} className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Marathon Consulting */}
+            <div className="relative mb-8 ml-16">
+              <div className="absolute -left-12 w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                <div className="mb-3">
+                  <h3 className="text-xl font-bold text-gray-800">Full Stack Developer - Enterprise Solutions</h3>
+                  <p className="text-indigo-600 font-semibold">Marathon Consulting (Vital Core Client)</p>
+                  <div className="flex items-center space-x-2 text-sm text-gray-600 mt-1">
+                    <TimerIcon className="w-4 h-4" />
+                    <span>Jan 2024 - Feb 2026</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start">
+                    <ChevronRightIcon className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
                     <span>Led development of enterprise Dynamic Group Management System managing 5,000+ users and processing 100,000+ records daily via Microsoft Graph API</span>
                   </li>
                   <li className="flex items-start">
-                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <ChevronRightIcon className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
                     <span>Architected multi-layered Clean Architecture solution using .NET 8, Blazor Server, and Entity Framework Core with 99.9% uptime</span>
                   </li>
                   <li className="flex items-start">
-                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <ChevronRightIcon className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
                     <span>Built real-time SignalR monitoring dashboard tracking 6 concurrent background sync jobs with intelligent conflict resolution</span>
                   </li>
                   <li className="flex items-start">
-                    <ChevronRightIcon className="w-5 h-5 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <ChevronRightIcon className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
                     <span>Optimized performance reducing page load from 8s to under 2s and API calls by 70% through strategic caching</span>
                   </li>
                 </ul>
